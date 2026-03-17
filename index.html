@@ -3,149 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klub Goaters | Kozí příběh</title>
+    <title>Klub Goaters | Léta Páně 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Crimson+Pro:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --wood: #120a03;
-            --parchment: #e6d5b3;
-            --ink: #2b1d0e;
-            --gold: #c5a059;
-            --seal-red: #7a1212;
+        :root { --wood: #120a03; --parchment: #e6d5b3; --ink: #2b1d0e; --gold: #c5a059; --fire: #ff4500; }
+        body { background: var(--wood); margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
+        header { background: #261a0d; border-bottom: 2px solid var(--gold); padding: 20px; text-align: center; box-shadow: 0 4px 20px #000; }
+        nav a { font-family: 'MedievalSharp', cursive; color: var(--gold); text-decoration: none; padding: 10px 30px; border: 1px solid var(--gold); margin: 0 10px; background: rgba(0,0,0,0.3); transition: 0.4s; }
+        nav a:hover { background: var(--gold); color: var(--wood); box-shadow: 0 0 20px var(--gold); }
+
+        .parchment-container { display: flex; justify-content: center; padding: 60px 20px; }
+        .parchment { 
+            max-width: 800px; padding: 60px; background: var(--parchment);
+            background-image: radial-gradient(circle, transparent, rgba(0,0,0,0.1)), url('https://www.transparenttextures.com/patterns/pinstriped-suit.png');
+            box-shadow: 0 0 50px #000, inset 0 0 100px rgba(139, 100, 45, 0.3);
+            border-radius: 5px; position: relative; transform: rotate(-0.5deg);
         }
 
-        body {
-            background: var(--wood);
-            /* Efekt dřevěného stolu v pozadí */
-            background-image: repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(0,0,0,0.2) 50px, rgba(0,0,0,0.2) 100px);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+        h1 { font-family: 'MedievalSharp', cursive; text-align: center; font-size: 3rem; color: #7a1212; margin: 0; }
 
-        header {
-            background: #261a0d;
-            border-bottom: 2px solid var(--gold);
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
-        }
-
-        nav a {
-            font-family: 'MedievalSharp', cursive;
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 1.2rem;
-            padding: 10px 30px;
-            border: 1px solid var(--gold);
-            margin: 0 10px;
-            background: rgba(0,0,0,0.3);
-            transition: 0.4s;
-        }
-
-        nav a:hover {
-            background: var(--gold);
-            color: var(--wood);
-            box-shadow: 0 0 15px var(--gold);
-        }
-
-        /* --- Atmosférický pergamen --- */
-        .parchment-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
-
-        .parchment {
-            max-width: 750px;
-            padding: 60px 80px;
+        /* --- ŠÍLENÁ MAGICKÁ PEČEŤ --- */
+        .seal-wrapper { display: flex; justify-content: center; margin: 40px 0; position: relative; height: 250px; }
+        
+        .mystic-seal {
+            width: 200px; height: 200px;
+            border: 4px double var(--gold);
+            border-radius: 50%;
             position: relative;
-            background: var(--parchment);
-            /* Efekt starého papíru pomocí více vrstev gradientů */
-            background-image: 
-                radial-gradient(circle at 50% 50%, transparent, rgba(0,0,0,0.05)),
-                url('https://www.transparenttextures.com/patterns/pinstriped-suit.png'); /* Jemná textura */
-            color: var(--ink);
-            box-shadow: 
-                2px 2px 2px rgba(0,0,0,0.2), 
-                0 0 50px rgba(0,0,0,0.5),
-                inset 0 0 100px rgba(139, 100, 45, 0.2);
-            border-radius: 2px 5px 2px 10px;
-            transform: rotate(-0.5deg); /* Lehké zešikmení pro realismus */
+            background: rgba(122, 18, 18, 0.1);
+            box-shadow: 0 0 30px var(--fire), inset 0 0 20px var(--fire);
+            animation: pulse 2s infinite alternate;
         }
 
-        /* Rozvlněné okraje */
-        .parchment::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.1);
-            border: 1px solid rgba(0,0,0,0.05);
-            pointer-events: none;
+        /* Rotující kruh s textem */
+        .seal-inner-circle {
+            position: absolute; width: 100%; height: 100%;
+            animation: rotateSeal 10s linear infinite;
+            display: flex; justify-content: center; align-items: center;
         }
 
-        h1 {
-            font-family: 'MedievalSharp', cursive;
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 40px;
-            color: var(--seal-red);
-            letter-spacing: 2px;
-            border-bottom: 1px double var(--ink);
-            padding-bottom: 10px;
+        .seal-inner-circle::before {
+            content: 'GOATERS • LEGENDARY • EST 2008 • MAGNIFICUS •';
+            font-family: 'MedievalSharp'; font-size: 0.8rem; color: var(--ink);
+            letter-spacing: 5px; position: absolute; width: 180px; text-align: center;
         }
 
-        .content {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1.5rem;
-            line-height: 1.7;
-            text-align: justify;
-            font-style: italic;
+        /* Točící se koza */
+        .rotating-goat {
+            position: absolute; top: 25%; left: 25%; width: 50%; height: 50%;
+            font-size: 5rem; display: flex; align-items: center; justify-content: center;
+            animation: flipGoat 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px var(--gold));
         }
 
-        /* --- Vylepšený Drop Cap --- */
-        .dropcap {
-            float: left;
-            font-family: 'MedievalSharp', cursive;
-            font-size: 5.5rem;
-            line-height: 0.8;
-            padding-top: 10px;
-            padding-right: 12px;
-            color: var(--seal-red);
-            text-shadow: 1px 1px 0px var(--gold);
-        }
+        /* Louče a oheň */
+        .torch { position: absolute; font-size: 2rem; animation: flicker 0.2s infinite; }
+        .t1 { top: -20px; left: 50%; transform: translateX(-50%); }
+        .t2 { bottom: -20px; left: 50%; transform: translateX(-50%); }
 
-        .signature {
-            margin-top: 50px;
-            text-align: right;
-            font-family: 'MedievalSharp', cursive;
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
+        @keyframes rotateSeal { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes flipGoat { 0% { transform: rotateY(0deg); } 50% { transform: rotateY(180deg) scale(1.2); } 100% { transform: rotateY(360deg); } }
+        @keyframes pulse { from { box-shadow: 0 0 20px var(--fire); } to { box-shadow: 0 0 50px #ff8c00; } }
+        @keyframes flicker { 0% { opacity: 0.8; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-2px); } 100% { opacity: 0.9; transform: translateY(1px); } }
 
-        .goat-emoji {
-            font-size: 1.4rem;
-            font-style: normal;
-        }
+        .content { font-family: 'Crimson Pro', serif; font-size: 1.5rem; line-height: 1.7; text-align: justify; font-style: italic; }
+        .dropcap { float: left; font-family: 'MedievalSharp', cursive; font-size: 5.5rem; line-height: 0.8; padding-top: 10px; padding-right: 12px; color: #7a1212; text-shadow: 1px 1px 0px var(--gold); }
+        .signature { margin-top: 50px; text-align: right; font-family: 'MedievalSharp', cursive; font-size: 1.2rem; opacity: 0.8; }
     </style>
 </head>
 <body>
 
 <header>
-    <nav>
-        <a href="index.html">Domů</a>
-        <a href="membership.html">Stát se členem</a>
-    </nav>
+    <nav><a href="index.html">Domů</a> <a href="membership.html">Vstoupit do cechu</a></nav>
 </header>
 
 <div class="parchment-container">
     <article class="parchment">
-        <h1>Stránka klubu Goaters</h1>
+        <h1>Klub Goaters</h1>
+        
+        <div class="seal-wrapper">
+            <div class="torch t1">🔥</div>
+            <div class="mystic-seal">
+                <div class="seal-inner-circle"></div>
+                <div class="rotating-goat">🐐</div>
+            </div>
+            <div class="torch t2">🔥</div>
+        </div>
         
         <div class="content">
-            <span class="dropcap">V</span>stupte do síně věrných, kde každý z nás s úctou vzpomíná na kroky Jemmyho a jeho věrné družky. Toto jest digitální kronika cechu Goaters, útočiště pro ty, kteří v srdci nosí pověsti staré Prahy a nekonečnou moudrost rohatých stvoření. Nechť vaše cesta vede k pravdě, sýru a slávě! <span class="goat-emoji">🐐</span>
+            <span class="dropcap">V</span>stupte do síně věrných, kde každý z nás s úctou vzpomíná na kroky Jemmyho a jeho věrné družky. Toto jest digitální kronika cechu Goaters, útočiště pro ty, kteří v srdci nosí pověsti staré Prahy a nekonečnou moudrost rohatých stvoření. Nechť vaše cesta vede k pravdě, sýru a slávě!
         </div>
+
+        <div class="signature">Dáno v Praze,<br>Léta Páně 2026</div>
+    </article>
+</div>
+
+</body>
+</html>
