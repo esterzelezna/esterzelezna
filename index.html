@@ -1,80 +1,162 @@
+<!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klub Goaters | Kozí příběh</title>
+    <title>Klub Goaters | Kozí příběh 🐐</title>
     <style>
+        /* Společné styly pro oba soubory */
+        :root {
+            --bg-color: #1a0f00; /* Tmavé dřevo */
+            --parchment-bg: #f4e4bc; /* Barva pergamenu */
+            --parchment-border: #d4af37; /* Zlatá okraj */
+            --text-color: #3d260a; /* Tmavě hnědý text na pergamenu */
+            --header-bg: #3d260a;
+            --header-text: #f4e4bc;
+        }
+
         body {
-            background-color: #1a0f00;
-            color: #f4e4bc;
+            background-color: var(--bg-color);
+            color: var(--header-text);
             font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
+
+        /* --- Horní menu (KCD styl) --- */
         header {
-            background-color: #3d260a;
-            border-bottom: 3px solid #d4af37;
+            background-color: var(--header-bg);
+            border-bottom: 4px solid var(--parchment-border);
             padding: 1.5rem;
             text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.7);
         }
+
         nav a {
-            background: #d4af37;
+            background: linear-gradient(to bottom, #d4af37 0%, #a68a2d 100%); /* Zlatý gradient */
             color: #1a0f00;
-            padding: 12px 25px;
+            padding: 12px 30px;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 3px;
             text-transform: uppercase;
-            transition: 0.3s;
-            margin: 0 10px;
+            transition: 0.2s;
+            margin: 0 15px;
             display: inline-block;
+            border: 2px solid #5c4033;
+            font-family: 'Courier New', monospace; /* Pro kontrast */
+            letter-spacing: 1px;
         }
+
         nav a:hover {
             background: #f4e4bc;
-            box-shadow: 0 0 15px #d4af37;
+            box-shadow: 0 0 20px #ffd700;
+            transform: scale(1.05);
         }
-        .container {
+
+        /* --- Hlavní kontejner (Pergamen) --- */
+        .parchment {
             max-width: 800px;
-            margin: 80px auto;
-            padding: 40px;
-            background: rgba(45, 30, 10, 0.9);
-            border: 2px solid #d4af37;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            border-radius: 10px;
-            text-align: center;
+            margin: 60px auto;
+            padding: 60px;
+            background-color: var(--parchment-bg);
+            color: var(--text-color);
+            border: 20px solid transparent;
+            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M0 0 L50 0 L50 50 L0 50 Z" fill="%23f4e4bc"/><path d="M5 5 L45 5 L45 45 L5 45 Z" fill="none" stroke="%23d4af37" stroke-width="2"/><path d="M0 0 L10 10 M40 10 L50 0 M0 50 L10 40 M40 40 L50 50" stroke="%233d260a" stroke-width="1"/></svg>') 20 stretch;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            position: relative;
+            border-radius: 5px;
         }
+
+        /* Spálené okraje (falešné) */
+        .parchment::before {
+            content: '';
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border: 2px solid #3d260a;
+            border-radius: 10px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* --- Typografie úvodní stránky --- */
         h1 {
             font-variant: small-caps;
-            color: #d4af37;
-            text-shadow: 2px 2px 4px #000;
-            font-size: 3rem;
+            color: #8B0000; /* Temně červená */
+            text-align: center;
+            font-size: 3.5rem;
+            margin-top: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            border-bottom: 2px solid #8B0000;
+            padding-bottom: 15px;
         }
-        .intro-text {
-            font-size: 1.3rem;
+
+        .script-text {
+            font-family: 'Crimson Text', 'Times New Roman', serif; /* Script-like font */
+            font-size: 1.6rem;
             font-style: italic;
-            margin: 25px 0;
+            margin: 30px 0;
+            text-align: justify;
+        }
+
+        /* --- Dropcap (Velké počáteční písmeno) --- */
+        .dropcap {
+            float: left;
+            font-size: 6rem;
+            line-height: 1;
+            font-weight: bold;
+            color: #8B0000;
+            font-family: 'MedievalSharp', cursive; /* Pokud by byl externí font, zde */
+            margin-right: 15px;
+            margin-top: 5px;
+            border: 3px solid #8B0000;
+            padding: 5px 15px;
+            background: rgba(139, 0, 0, 0.05);
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        .goat-emoji {
+            font-size: 2rem;
+            vertical-align: middle;
+        }
+
+        .signature {
+            text-align: right;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.4rem;
+            margin-top: 40px;
+            border-top: 1px solid rgba(0,0,0,0.2);
+            padding-top: 20px;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header>
     <nav>
-        <a href="index.html">Domů</a>
-        <a href="membership.html">Stát se členem</a>
+        <a href="index.html">Domů 🏠</a>
+        <a href="membership.html">Vstoupit do cechu 📜</a>
     </nav>
 </header>
 
-<div class="container">
-    <h1>Toto je stránka klubu Goaters</h1>
-    <hr style="border: 0; border-top: 2px solid #d4af37; width: 60%;">
-    <p class="intro-text">
-        Vstupte do bran cechu milovníků nejlegendárnější české animované ságy. 
-        Toto je digitální útočiště pro všechny, kteří slyší volání dobrodružství 
-        a vědí, že koza je nejlepší přítel člověka.
-    </p>
-    <p>Nechť vás kopyta vedou správným směrem!</p>
+<div class="parchment">
+    <h1>Klub Goaters </h1>
+    
+    <div class="script-text">
+        <span class="dropcap">V</span>stupte, poutníci, do bran našeho digitálního cechu, 
+        kde se scházejí ti nejvěrnější milovníci té nejušlechtilejší české filmové ságy. 
+        <span class="goat-emoji">🐐</span> Toto je útočiště pro duše, které slyší volání dobrodružství, 
+        obdivují krásu Prahy za vlády Karla IV. a vědí, že koza není jen zvíře, 
+        ale nejlepší přítel a nejvěrnější spolubojovník. Nechť vaše kopyta vedou správným směrem! 
+        <span class="goat-emoji">🐐</span>
+    </div>
+
+    <div class="signature">
+        Zapsáno léta Páně 2024,<br>
+        Rada starších Cechu Goaters
+    </div>
 </div>
 
 </body>
