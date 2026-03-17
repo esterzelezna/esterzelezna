@@ -3,20 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ester Železná</title>
+    <title>Klub Goaters | Kozí příběh</title>
     <style>
-        body {font-family: sans-serif;
+        /* Základní styly pro středověkou atmosféru */
+        body {
+            background-color: #1a0f00; /* Tmavě hnědá/černá */
+            color: #f4e4bc; /* Barva pergamenu */
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
-            margin: 40px;
-            max-width: 600px;
-            color: #333;}
-        h1 {color: #2c3e50}
+        }
+
+        header {
+            background-color: #3d260a;
+            border-bottom: 3px solid #d4af37; /* Zlatý lem */
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            background: #d4af37;
+            color: #1a0f00;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #f4e4bc;
+            box-shadow: 0 0 15px #d4af37;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background: rgba(45, 30, 10, 0.9);
+            border: 2px solid #d4af37;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            font-variant: small-caps;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* Formulář */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            background: #f4e4bc;
+            border: 2px solid #3d260a;
+            border-radius: 4px;
+        }
+
+        button.submit-btn {
+            background: #d4af37;
+            border: none;
+            padding: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        button.submit-btn:hover {
+            background: #ffd700;
+        }
+
+        /* Skrytí sekce fanklubu pro "single-page" efekt */
+        #membership-section {
+            display: none;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Ester Železná</h1>
-    <p>Ahoj, jmenuju se Ester. Baví mě literatura a dějiny umění. Jsem viceprezidentka mezinárodního fanklubu filmové série Kozí příběh, který se jmenuje The Goaters. </p>
+<header>
+    <nav>
+        <a href="#" onclick="showHome()">Domů</a>
+        <a href="#" onclick="showForm()">Stát se členem</a>
+    </nav>
+</header>
+
+<div class="container" id="home-section">
+    <h1>Vítejte v klubu Goaters</h1>
+    <hr style="border: 0; border-top: 1px solid #d4af37; width: 50%;">
+    <p class="intro-text">
+        Vstupte do bran cechu milovníků nejlegendárnější české animované ságy. 
+        Toto je digitální útočiště pro všechny, kteří slyší volání dobrodružství, 
+        vidí krásu v Praze za Karla IV. a vědí, že koza je nejlepší přítel člověka.
+    </p>
+    <p>Nechť vás kopyta vedou správným směrem!</p>
+</div>
+
+<div class="container" id="membership-section">
+    <h2>Vstup do Fanklubu Kozího příběhu</h2>
+    <p>Prokažte svou věrnost a vyplňte tento úpis:</p>
+    
+    <form onsubmit="event.preventDefault(); alert('Váš úpis byl doručen hradnímu poslu!');">
+        <label for="name">Jméno a příjmení (nebo přezdívka v cechu):</label>
+        <input type="text" id="name" placeholder="Jemmy z Prahy" required>
+
+        <label for="favorite">Oblíbený díl:</label>
+        <select id="favorite">
+            <option value="1">Kozí příběh - Pověsti staré Prahy</option>
+            <option value="2">Kozí příběh se sýrem</option>
+            <option value="both">Miluji oba stejně (Srdce rytíře)</option>
+        </select>
+
+        <label for="reason">Proč chceš vstoupit mezi Goaters?</label>
+        <textarea id="reason" rows="4" placeholder="Chci hlídat orloj..."></textarea>
+
+        <button type="submit" class="submit-btn">ZAPECETIT PŘIHLÁŠKU</button>
+    </form>
+</div>
+
+<script>
+    function showForm() {
+        document.getElementById('home-section').style.display = 'none';
+        document.getElementById('membership-section').style.display = 'block';
+    }
+
+    function showHome() {
+        document.getElementById('home-section').style.display = 'block';
+        document.getElementById('membership-section').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
