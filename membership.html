@@ -3,107 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Úpis člena | Klub Goaters 📜</title>
+    <title>Úpis člena | Prověrka znalostí 📜</title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Crimson+Pro:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
     <style>
-        /* Opakujeme základní styly z index.html pro konzistenci */
-        :root {
-            --bg-color: #1a0f00; --parchment-bg: #f4e4bc; --parchment-border: #d4af37;
-            --text-color: #3d260a; --header-bg: #3d260a; --header-text: #f4e4bc;
-        }
-        body { background-color: var(--bg-color); color: var(--header-text); font-family: 'Georgia', serif; margin: 0; }
-        header { background-color: var(--header-bg); border-bottom: 4px solid var(--parchment-border); padding: 1.5rem; text-align: center; }
-        nav a { background: linear-gradient(to bottom, #d4af37 0%, #a68a2d 100%); color: #1a0f00; padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 3px; border: 2px solid #5c4033; display: inline-block; }
+        :root { --wood: #120a03; --parchment: #e6d5b3; --ink: #2b1d0e; --gold: #c5a059; --seal-red: #7a1212; }
+        body { background: var(--wood); margin: 0; padding: 0; font-family: 'Crimson Pro', serif; }
+        header { background: #261a0d; border-bottom: 2px solid var(--gold); padding: 20px; text-align: center; }
+        nav a { font-family: 'MedievalSharp', cursive; color: var(--gold); text-decoration: none; padding: 10px 30px; border: 1px solid var(--gold); }
         
-        /* Pergamen kontejner (stejný jako v indexu) */
-        .parchment {
-            max-width: 600px; margin: 50px auto; padding: 50px;
-            background-color: var(--parchment-bg); color: var(--text-color);
-            border: 20px solid transparent;
-            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M0 0 L50 0 L50 50 L0 50 Z" fill="%23f4e4bc"/><path d="M5 5 L45 5 L45 45 L5 45 Z" fill="none" stroke="%23d4af37" stroke-width="2"/><path d="M0 0 L10 10 M40 10 L50 0 M0 50 L10 40 M40 40 L50 50" stroke="%233d260a" stroke-width="1"/></svg>') 20 stretch;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+        .parchment-container { display: flex; justify-content: center; padding: 40px 20px; }
+        .parchment { 
+            max-width: 700px; width: 100%; padding: 60px; background: var(--parchment);
+            box-shadow: 0 0 50px rgba(0,0,0,0.5), inset 0 0 60px rgba(139, 100, 45, 0.2);
+            color: var(--ink); border-radius: 3px; position: relative;
         }
 
-        h2 { font-variant: small-caps; color: #8B0000; text-align: center; font-size: 2.5rem; margin-top: 0; }
+        h2 { font-family: 'MedievalSharp', cursive; color: var(--seal-red); text-align: center; font-size: 2.2rem; border-bottom: 1px solid var(--ink); padding-bottom: 10px; }
         
-        /* --- Stylizace formuláře --- */
-        form { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
-        fieldset { border: 2px solid rgba(139, 0, 0, 0.2); padding: 20px; border-radius: 5px; }
-        legend { font-weight: bold; color: #8B0000; padding: 0 10px; font-variant: small-caps; }
-
-        label { font-weight: bold; color: #3d260a; display: block; margin-bottom: 5px; }
+        form { display: flex; flex-direction: column; gap: 25px; margin-top: 30px; }
         
-        input, select, textarea {
-            width: 100%; padding: 12px;
-            background-color: rgba(255,255,255,0.5); /* Poloprůhledná bílá na pergamenu */
-            border: 2px solid #3d260a; border-radius: 3px;
-            font-family: inherit; font-size: 1rem;
-            box-sizing: border-box; /* Důležité pro padding */
-        }
-        
-        input:focus, select:focus, textarea:focus {
-            border-color: #8B0000; background-color: #fff; outline: none;
+        .question-block {
+            border-left: 3px solid var(--seal-red);
+            padding-left: 20px;
+            margin-bottom: 10px;
         }
 
-        /* Tlačítko jako pečeť */
-        .submit-btn {
-            background: #8B0000; /* Červená jako pečetní vosk */
-            color: #f4e4bc;
-            border: 4px solid #5c0000;
-            padding: 15px;
-            font-weight: bold; cursor: pointer; font-size: 1.2rem;
-            font-variant: small-caps;
-            border-radius: 50px; /* Kulatý tvar pečetě */
-            transition: 0.3s;
-            margin-top: 20px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.5);
-            width: auto; align-self: center; /* Vycentrovat tlačítko */
-            padding-left: 40px; padding-right: 40px;
+        label { font-weight: bold; font-variant: small-caps; font-size: 1.1rem; color: #4a341e; display: block; margin-bottom: 8px; }
+        
+        input[type="text"], select, textarea {
+            width: 100%;
+            background: rgba(0,0,0,0.03);
+            border: none;
+            border-bottom: 1px solid var(--ink);
+            padding: 10px;
+            font-family: inherit;
+            font-size: 1.1rem;
+            color: var(--ink);
+            box-sizing: border-box;
         }
 
-        .submit-btn:hover {
-            background: #a52a2a;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(139,0,0,0.6);
+        input:focus, textarea:focus { outline: none; border-bottom: 2px solid var(--seal-red); background: rgba(255,255,255,0.3); }
+
+        .radio-group { display: flex; flex-direction: column; gap: 8px; margin-top: 5px; }
+        .radio-option { display: flex; align-items: center; gap: 10px; font-style: italic; cursor: pointer; }
+
+        .seal-button {
+            background: var(--seal-red);
+            color: white;
+            border: 4px solid #500;
+            padding: 20px;
+            font-family: 'MedievalSharp', cursive;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 30px;
+            box-shadow: 3px 3px 15px rgba(0,0,0,0.5);
+            border-radius: 50%;
+            width: 160px; height: 160px;
+            align-self: center;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            transition: 0.4s;
+            line-height: 1.2;
         }
+
+        .seal-button:hover {
+            transform: scale(1.1) rotate(-5deg);
+            background: #900;
+            box-shadow: 0 0 25px rgba(122, 18, 18, 0.6);
+        }
+
+        .hint { font-size: 0.9rem; opacity: 0.7; font-style: italic; }
     </style>
 </head>
 <body>
 
 <header>
-    <nav>
-        <a href="index.html">📜 Zpět na úvod</a>
-    </nav>
+    <nav><a href="index.html">📜 Návrat do podhradí</a></nav>
 </header>
 
-<div class="parchment">
-    <h2>Úpis do Fanklubu</h2>
-    <p style="text-align: center; font-style: italic;">Zapečeťte svůj osud a přidejte se k milovníkům Kozího příběhu.</p>
-    
-    <form action="#" onsubmit="alert('Váš úpis byl zapečetěn a odeslán holubí poštou!'); return false;">
-        <fieldset>
-            <legend>Osobní údaje</legend>
-            <label for="name">Jméno hrdiny (nebo přezdívka v cechu):</label>
-            <input type="text" id="name" placeholder="Jemmy z podhradí" required>
-        </fieldset>
+<div class="parchment-container">
+    <section class="parchment">
+        <h2>Vědomostní Úpis Poutníka</h2>
+        <p style="text-align: center; font-style: italic;">Jen ten, kdo zná pravdu o hřebech a sýru, smí usednout u našeho stolu.</p>
+        
+        <form onsubmit="alert('Tvé odpovědi budou posouzeny radou starších u Orloje!'); return false;">
+            
+            <div class="question-block">
+                <label for="name">Tvůj civilní pseudonym:</label>
+                <input type="text" id="name" placeholder="Např. Matěj z vesnice..." required>
+            </div>
 
-        <fieldset>
-            <legend>Věrnost</legend>
-            <label for="favorite">Který poklad preferuješ?</label>
-            <select id="favorite">
-                <option value="1">Kozí příběh - Pověsti staré Prahy</option>
-                <option value="2">Kozí příběh se sýrem</option>
-                <option value="both">Oba jsou pro mě posvátné</option>
-            </select>
+            <div class="question-block">
+                <label>1. Proč Koza v prvním díle tak žárlí na Mácu?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="q1" required> Máca jí krade její oblíbené zelí.</label>
+                    <label class="radio-option"><input type="radio" name="q1"> Bojí se, že Kuba kvůli ní zapomene stavět Orloj.</label>
+                    <label class="radio-option"><input type="radio" name="q1"> Žárlí na pozornost, kterou Kuba Máce věnuje.</label>
+                </div>
+            </div>
 
-            <label for="reason">Proč chceš nosit naše barvy?</label>
-            <textarea id="reason" rows="4" placeholder="Chci hlídat pražský orloj..."></textarea>
-        </fieldset>
+            <div class="question-block">
+                <label for="nails">2. Kolik hřebů (cca) musela Koza sehnat pro stavbu Orloje?</label>
+                <input type="text" id="nails" placeholder="Vzpomeň si na tu dřinu..." required>
+                <span class="hint">Nápověda: Bylo jich víc, než dokáže průměrný vesničan spočítat.</span>
+            </div>
 
-        <button type="submit" class="submit-btn">ZAPECETIT ÚPIS</button>
-    </form>
+            <div class="question-block">
+                <label>3. Jaký osud potkal mistra Hanuše podle filmu?</label>
+                <textarea rows="2" placeholder="Popiš tu tragédii vlastními slovy..." required></textarea>
+            </div>
+
+            <div class="question-block">
+                <label>4. Co je hlavním motivem druhého dílu (Kozí příběh se sýrem)?</label>
+                <select required>
+                    <option value="">-- Vyber správnou cestu --</option>
+                    <option>Hledání ztraceného pokladu Karla IV.</option>
+                    <option>Záchrana rodičů z hradu, kde se vyrábí sýr.</option>
+                    <option>Válka mezi kozami a lidmi o nadvládu nad Prahou.</option>
+                </select>
+            </div>
+
+            <div class="question-block">
+                <label>5. Doplň slavnou hlášku: "Když se ti to nelíbí..."</label>
+                <input type="text" placeholder="...tak si (doplň)" required>
+            </div>
+
+            <button type="submit" class="seal-button">ZAPECETIT A ODESLAT RADĚ</button>
+        </form>
+    </section>
 </div>
 
 </body>
 </html>
-</body>
 </html>
