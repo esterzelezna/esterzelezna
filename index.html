@@ -3,161 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klub Goaters | Kozí příběh 🐐</title>
+    <title>Klub Goaters | Kozí příběh</title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Crimson+Pro:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
     <style>
-        /* Společné styly pro oba soubory */
         :root {
-            --bg-color: #1a0f00; /* Tmavé dřevo */
-            --parchment-bg: #f4e4bc; /* Barva pergamenu */
-            --parchment-border: #d4af37; /* Zlatá okraj */
-            --text-color: #3d260a; /* Tmavě hnědý text na pergamenu */
-            --header-bg: #3d260a;
-            --header-text: #f4e4bc;
+            --wood: #120a03;
+            --parchment: #e6d5b3;
+            --ink: #2b1d0e;
+            --gold: #c5a059;
+            --seal-red: #7a1212;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--header-text);
-            font-family: 'Georgia', serif;
+            background: var(--wood);
+            /* Efekt dřevěného stolu v pozadí */
+            background-image: repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(0,0,0,0.2) 50px, rgba(0,0,0,0.2) 100px);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* --- Horní menu (KCD styl) --- */
         header {
-            background-color: var(--header-bg);
-            border-bottom: 4px solid var(--parchment-border);
-            padding: 1.5rem;
+            background: #261a0d;
+            border-bottom: 2px solid var(--gold);
+            padding: 20px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
         }
 
         nav a {
-            background: linear-gradient(to bottom, #d4af37 0%, #a68a2d 100%); /* Zlatý gradient */
-            color: #1a0f00;
-            padding: 12px 30px;
+            font-family: 'MedievalSharp', cursive;
+            color: var(--gold);
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 3px;
-            text-transform: uppercase;
-            transition: 0.2s;
-            margin: 0 15px;
-            display: inline-block;
-            border: 2px solid #5c4033;
-            font-family: 'Courier New', monospace; /* Pro kontrast */
-            letter-spacing: 1px;
+            font-size: 1.2rem;
+            padding: 10px 30px;
+            border: 1px solid var(--gold);
+            margin: 0 10px;
+            background: rgba(0,0,0,0.3);
+            transition: 0.4s;
         }
 
         nav a:hover {
-            background: #f4e4bc;
-            box-shadow: 0 0 20px #ffd700;
-            transform: scale(1.05);
+            background: var(--gold);
+            color: var(--wood);
+            box-shadow: 0 0 15px var(--gold);
         }
 
-        /* --- Hlavní kontejner (Pergamen) --- */
+        /* --- Atmosférický pergamen --- */
+        .parchment-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
         .parchment {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 60px;
-            background-color: var(--parchment-bg);
-            color: var(--text-color);
-            border: 20px solid transparent;
-            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M0 0 L50 0 L50 50 L0 50 Z" fill="%23f4e4bc"/><path d="M5 5 L45 5 L45 45 L5 45 Z" fill="none" stroke="%23d4af37" stroke-width="2"/><path d="M0 0 L10 10 M40 10 L50 0 M0 50 L10 40 M40 40 L50 50" stroke="%233d260a" stroke-width="1"/></svg>') 20 stretch;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            max-width: 750px;
+            padding: 60px 80px;
             position: relative;
-            border-radius: 5px;
+            background: var(--parchment);
+            /* Efekt starého papíru pomocí více vrstev gradientů */
+            background-image: 
+                radial-gradient(circle at 50% 50%, transparent, rgba(0,0,0,0.05)),
+                url('https://www.transparenttextures.com/patterns/pinstriped-suit.png'); /* Jemná textura */
+            color: var(--ink);
+            box-shadow: 
+                2px 2px 2px rgba(0,0,0,0.2), 
+                0 0 50px rgba(0,0,0,0.5),
+                inset 0 0 100px rgba(139, 100, 45, 0.2);
+            border-radius: 2px 5px 2px 10px;
+            transform: rotate(-0.5deg); /* Lehké zešikmení pro realismus */
         }
 
-        /* Spálené okraje (falešné) */
+        /* Rozvlněné okraje */
         .parchment::before {
             content: '';
             position: absolute;
-            top: -5px; left: -5px; right: -5px; bottom: -5px;
-            border: 2px solid #3d260a;
-            border-radius: 10px;
-            opacity: 0.3;
+            top: 0; left: 0; right: 0; bottom: 0;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
             pointer-events: none;
         }
 
-        /* --- Typografie úvodní stránky --- */
         h1 {
-            font-variant: small-caps;
-            color: #8B0000; /* Temně červená */
+            font-family: 'MedievalSharp', cursive;
             text-align: center;
-            font-size: 3.5rem;
-            margin-top: 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            border-bottom: 2px solid #8B0000;
-            padding-bottom: 15px;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: var(--seal-red);
+            letter-spacing: 2px;
+            border-bottom: 1px double var(--ink);
+            padding-bottom: 10px;
         }
 
-        .script-text {
-            font-family: 'Crimson Text', 'Times New Roman', serif; /* Script-like font */
-            font-size: 1.6rem;
-            font-style: italic;
-            margin: 30px 0;
+        .content {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            line-height: 1.7;
             text-align: justify;
+            font-style: italic;
         }
 
-        /* --- Dropcap (Velké počáteční písmeno) --- */
+        /* --- Vylepšený Drop Cap --- */
         .dropcap {
             float: left;
-            font-size: 6rem;
-            line-height: 1;
-            font-weight: bold;
-            color: #8B0000;
-            font-family: 'MedievalSharp', cursive; /* Pokud by byl externí font, zde */
-            margin-right: 15px;
-            margin-top: 5px;
-            border: 3px solid #8B0000;
-            padding: 5px 15px;
-            background: rgba(139, 0, 0, 0.05);
-            text-shadow: 2px 2px 0 #000;
-        }
-
-        .goat-emoji {
-            font-size: 2rem;
-            vertical-align: middle;
+            font-family: 'MedievalSharp', cursive;
+            font-size: 5.5rem;
+            line-height: 0.8;
+            padding-top: 10px;
+            padding-right: 12px;
+            color: var(--seal-red);
+            text-shadow: 1px 1px 0px var(--gold);
         }
 
         .signature {
+            margin-top: 50px;
             text-align: right;
-            font-family: 'Crimson Text', serif;
+            font-family: 'MedievalSharp', cursive;
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .goat-emoji {
             font-size: 1.4rem;
-            margin-top: 40px;
-            border-top: 1px solid rgba(0,0,0,0.2);
-            padding-top: 20px;
+            font-style: normal;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header>
     <nav>
-        <a href="index.html">Domů 🏠</a>
-        <a href="membership.html">Vstoupit do cechu 📜</a>
+        <a href="index.html">Domů</a>
+        <a href="membership.html">Stát se členem</a>
     </nav>
 </header>
 
-<div class="parchment">
-    <h1>Klub Goaters </h1>
-    
-    <div class="script-text">
-        <span class="dropcap">V</span>stupte, poutníci, do bran našeho digitálního cechu, 
-        kde se scházejí ti nejvěrnější milovníci té nejušlechtilejší české filmové ságy. 
-        <span class="goat-emoji">🐐</span> Toto je útočiště pro duše, které slyší volání dobrodružství, 
-        obdivují krásu Prahy za vlády Karla IV. a vědí, že koza není jen zvíře, 
-        ale nejlepší přítel a nejvěrnější spolubojovník. Nechť vaše kopyta vedou správným směrem! 
-        <span class="goat-emoji">🐐</span>
-    </div>
-
-    <div class="signature">
-        Zapsáno léta Páně 2024,<br>
-        Rada starších Cechu Goaters
-    </div>
-</div>
-
-</body>
-</html>
+<div class="parchment-container">
+    <article class="parchment">
+        <h1>Stránka klubu Goaters</h1>
+        
+        <div class="content">
+            <span class="dropcap">V</span>stupte do síně věrných, kde každý z nás s úctou vzpomíná na kroky Jemmyho a jeho věrné družky. Toto jest digitální kronika cechu Goaters, útočiště pro ty, kteří v srdci nosí pověsti staré Prahy a nekonečnou moudrost rohatých stvoření. Nechť vaše cesta vede k pravdě, sýru a slávě! <span class="goat-emoji">🐐</span>
+        </div>
