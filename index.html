@@ -1,49 +1,73 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domovská stránka</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            text-align: center;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        a:hover {
-            background-color: #0056b3;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domovská stránka</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #3b2f2f, #1c1414);
+    font-family: 'Libre Baskerville', serif;
+    color: #f5e6c8;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+    max-width: 500px;
+    background: rgba(0,0,0,0.6);
+    border: 2px solid #c9a55c;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.8);
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #e8c97a;
+    letter-spacing: 2px;
+}
+
+p {
+    font-size: 18px;
+}
+
+a {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 25px;
+    background: linear-gradient(145deg, #c9a55c, #a67c2d);
+    color: #1c1414;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+a:hover {
+    background: linear-gradient(145deg, #e8c97a, #b68b3c);
+    transform: scale(1.05);
+}
+</style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Vítejte</h1>
-        <p>Pro zobrazení mého projektu o Florencii pokračujte zde:</p>
-        
-        <a href="cpp.html">Vstoupit do projektu: Florencie</a>
-    </div>
+<div class="container">
+    <h1>Vítejte</h1>
+    <p>Vstupte do světa renesance a objevte krásy Florencie.</p>
+    
+    <a href="cpp.html">Vstoupit do projektu: Florencie</a>
+</div>
 
 </body>
 </html>
